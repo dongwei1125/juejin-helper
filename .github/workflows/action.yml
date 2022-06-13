@@ -1,0 +1,25 @@
+name: Check in
+
+on:
+  schedule:
+    # UTC时间0和12点运行一次
+    - cron: '0 0,12 * * *'
+  workflow_dispatch:
+
+jobs:
+  check-in:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.14.0'
+
+      - name: Depend install and serve
+        env:
+          COOKIE: ${{ secrets.COOKIE }}
+          TIMEZONE: ${{ secrets.TIMEZONE }}
+        run: |
+          npm install
+          npm run serve
