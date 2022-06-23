@@ -1,14 +1,33 @@
 const api = require('./api/index')
 const msg = require('./msg')
+const robot = require('./robot')
 const { log, getCurrent } = require('./utils')
 const { REQUEST_RFULFILLED, REQUEST_REJECTED } = require('./const')
+
+
+const getMessage = (message) => {
+  let textContent = {
+    'msgtype': 'text',
+    'text': {
+      'content': `签到成功 ${message}`
+    },
+    'at': {
+      'atMobiles': [
+        '156xxxx8827',
+        '189xxxx8325'
+      ],
+      'isAtAll': false
+    }
+  };
+  robot.send(textContent);
+}
 
 // 小贴士
 const dailyTips = async () => {
   try {
     const { data = {} } = await api.getDailyCounts()
     const { cont_count: count = 0, sum_count: sum = 0 } = data
-
+    getMessage(data)
     console.log(msg.dailyTips.success(count, sum))
   } catch (err) {
     log(msg.dailyTips.fail(err))
@@ -20,7 +39,7 @@ const checkIn = async () => {
   try {
     const { data = {} } = await api.checkIn()
     const { incr_point: incr = 0, sum_point: sum = 0 } = data
-
+    getMessage(data)
     log(msg.checkIn.success(incr, sum))
   } catch (err) {
     log(msg.checkIn.fail(err))
@@ -32,14 +51,14 @@ const dipLuckcy = async () => {
   try {
     const { data = {} } = await api.getLotteryHistory()
     const lotteries = data.lotteries || []
-
+    getMessage(data)
     log(msg.dipLuckcy.info)
 
     if (lotteries.length) {
       const [firstLottery] = lotteries
       const { data = {} } = await api.dipLuckcy({ lottery_history_id: firstLottery.history_id })
       const { dip_value: dip = 0, total_value: total = 0 } = data
-
+      getMessage(data)
       log(msg.dipLuckcy.success(dip, total))
     }
   } catch (err) {
@@ -52,13 +71,13 @@ const drawLottery = async () => {
   try {
     const { data = {} } = await api.getFreeCount()
     const { free_count: n = 0 } = data
-
+    getMessage(data)
     log(msg.drawLottery.info(n))
 
     if (n) {
       const { data = {} } = await api.drawLottery()
       const { lottery_name: lottery = '' } = data
-
+      getMessage(data)
       log(msg.drawLottery.success(lottery))
     }
   } catch (err) {
@@ -70,7 +89,7 @@ const drawLottery = async () => {
 const bugFix = async () => {
   try {
     const { data = [] } = await api.getBug()
-
+    getMessage(data)
     log(msg.bugFix.info(data.length))
 
     if (data.length) {
