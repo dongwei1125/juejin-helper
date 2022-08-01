@@ -1,4 +1,4 @@
-const fetch = require('node-fetch')
+const fetch = require('../juejin/node-fetch.js')
 const { PUSHPLUS_TOKEN } = require('../ENV.js')
 
 const pushplus = async ({ title = '', content = '' } = {}) => {

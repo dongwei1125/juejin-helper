@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-fetch": "^2.6.7",
+    "node-fetch": "^3.2.9",
     "nodemailer": "^6.7.6"
   },
   "devDependencies": {

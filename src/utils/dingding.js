@@ -1,4 +1,4 @@
-const fetch = require('node-fetch')
+const fetch = require('../juejin/node-fetch.js')
 const { DINGDING_WEBHOOK } = require('../ENV.js')
 
 const dingding = async ({ title = '', content = '' } = {}) => {
