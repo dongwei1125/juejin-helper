@@ -1,6 +1,6 @@
 {
   "name": "juejin-helper",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "main.js",
   "scripts": {
@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-fetch": "^3.2.9",
+    "axios": "^0.27.2",
     "nodemailer": "^6.7.6"
   },
   "devDependencies": {

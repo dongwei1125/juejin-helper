@@ -8,8 +8,8 @@
   <a href="https://github.com/remy/nodemon">
     <img src="https://img.shields.io/badge/nodemon-2.0.16-blue.svg" alt="nodemon" />
   </a>
-  <a href="https://github.com/node-fetch/node-fetch">
-    <img src="https://img.shields.io/badge/node--fetch-2.6.7-brightgreen.svg" alt="node-fetch" />
+  <a href="https://github.com/axios/axios">
+    <img src="https://img.shields.io/badge/axios-0.27.2-brightgreen.svg" alt="axios" />
   </a>
   <a href="https://github.com/nodemailer/nodemailer">
     <img src="https://img.shields.io/badge/nodemailer-6.7.6-important.svg" alt="nodemailer" />
@@ -46,5 +46,5 @@
 ## 第三方插件
 
 * [nodemon](https://github.com/remy/nodemon)
-* [node-fetch](https://github.com/node-fetch/node-fetch)
+* [axios](https://github.com/axios/axios)
 * [nodemailer](https://github.com/nodemailer/nodemailer)

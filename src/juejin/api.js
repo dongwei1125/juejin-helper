@@ -1,24 +1,8 @@
-const Request = require('./request.js')
-const SUCCESS_CODE = 0
+const http = require('./httpInstance.js')
 
-class Api extends Request {
+class Api {
   constructor() {
-    super()
-    this.baseURL = 'https://api.juejin.cn'
-    this.headers.referer = 'https://juejin.cn/'
-    this.headers.cookie = ''
-  }
-
-  responseInterceptor(responce) {
-    if (responce.err_no !== SUCCESS_CODE) {
-      throw new Error(responce.err_msg)
-    }
-
-    return responce.data
-  }
-
-  setCookie(cookie) {
-    this.headers.cookie = cookie
+    this.http = http
   }
 
   /**
@@ -29,7 +13,7 @@ class Api extends Request {
    * }
    */
   getUser() {
-    return this.get('/user_api/v1/user/get')
+    return this.http.get('/user_api/v1/user/get')
   }
 
   /**
@@ -38,7 +22,7 @@ class Api extends Request {
    * Boolean 是否签到
    */
   getTodayStatus() {
-    return this.get('/growth_api/v1/get_today_status')
+    return this.http.get('/growth_api/v1/get_today_status')
   }
 
   /**
@@ -50,7 +34,7 @@ class Api extends Request {
    * }
    */
   checkIn() {
-    return this.post('/growth_api/v1/check_in')
+    return this.http.post('/growth_api/v1/check_in')
   }
 
   /**
@@ -62,7 +46,7 @@ class Api extends Request {
    * }
    */
   getCounts() {
-    return this.get('/growth_api/v1/get_counts')
+    return this.http.get('/growth_api/v1/get_counts')
   }
 
   /**
@@ -80,7 +64,7 @@ class Api extends Request {
    * }
    */
   getLotteryHistory({ page_no = 1, page_size = 5 } = {}) {
-    return this.post('/growth_api/v1/lottery_history/global_big', { data: { page_no, page_size } })
+    return this.http.post('/growth_api/v1/lottery_history/global_big', { page_no, page_size })
   }
 
   /**
@@ -94,7 +78,7 @@ class Api extends Request {
    * }
    */
   dipLucky(lottery_history_id) {
-    return this.post('/growth_api/v1/lottery_lucky/dip_lucky', { data: { lottery_history_id } })
+    return this.http.post('/growth_api/v1/lottery_lucky/dip_lucky', { lottery_history_id })
   }
 
   /**
@@ -105,7 +89,7 @@ class Api extends Request {
    * }
    */
   getLotteryConfig() {
-    return this.get('/growth_api/v1/lottery_config/get')
+    return this.http.get('/growth_api/v1/lottery_config/get')
   }
 
   /**
@@ -116,7 +100,7 @@ class Api extends Request {
    * }
    */
   drawLottery() {
-    return this.post('/growth_api/v1/lottery/draw')
+    return this.http.post('/growth_api/v1/lottery/draw')
   }
 
   /**
@@ -130,7 +114,7 @@ class Api extends Request {
    * ]
    */
   getNotCollectBug() {
-    return this.post('/user_api/v1/bugfix/not_collect')
+    return this.http.post('/user_api/v1/bugfix/not_collect', {})
   }
 
   /**
@@ -140,7 +124,7 @@ class Api extends Request {
    * @returns {Promise<*>}
    */
   collectBug({ bug_time = '', bug_type = '' } = {}) {
-    return this.post('/user_api/v1/bugfix/collect', { data: { bug_time, bug_type } })
+    return this.http.post('/user_api/v1/bugfix/collect', { bug_time, bug_type })
   }
 }
 
