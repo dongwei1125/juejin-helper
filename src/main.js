@@ -81,12 +81,12 @@ const main = async () => {
   const lotteryConfig = await juejin.getLotteryConfig()
   growth.freeCount = lotteryConfig.free_count || 0
 
-  if (growth.freeCount > 0) {
-    const lottery = await juejin.drawLottery()
+  // if (growth.freeCount > 0) {
+  //   const lottery = await juejin.drawLottery()
 
-    growth.freeDrawed = true
-    growth.lotteryName = lottery.lottery_name
-  }
+  //   growth.freeDrawed = true
+  //   growth.lotteryName = lottery.lottery_name
+  // }
 
   // BugFix
   const notCollectBug = await juejin.getNotCollectBug()
