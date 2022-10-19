@@ -55,7 +55,6 @@ const main = async () => {
 
     growth.checkedIn = true
     growth.incrPoint = checkInResult.incr_point
-    growth.sumPoint = checkInResult.sum_point
   }
 
   // 签到天数
@@ -87,6 +86,9 @@ const main = async () => {
     growth.freeDrawed = true
     growth.lotteryName = lottery.lottery_name
   }
+
+  // 当前矿石数
+  growth.sumPoint = await juejin.getCurrentPoint()
 
   // BugFix
   const notCollectBug = await juejin.getNotCollectBug()

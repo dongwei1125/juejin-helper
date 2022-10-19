@@ -30,7 +30,6 @@ class Api {
    * @returns {Promise<*>}
    * {
    *   incr_point: Number 获得矿石数
-   *   sum_point: Number 总矿石数
    * }
    */
   checkIn() {
@@ -93,7 +92,7 @@ class Api {
   }
 
   /**
-   * 抽奖
+   * @desc 抽奖
    * @returns {Promise<*>}
    * {
    *   lottery_name: String 奖品名称
@@ -104,7 +103,16 @@ class Api {
   }
 
   /**
-   * 未收集的 Bug
+   * @desc 当前矿石数
+   * @returns {Promise<*>}
+   * Number 矿石数量
+   */
+  getCurrentPoint() {
+    return this.http.get('/growth_api/v1/get_cur_point')
+  }
+
+  /**
+   * @desc 未收集的 Bug
    * @returns {Promise<*>}
    * [
    *   {
