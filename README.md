@@ -33,6 +33,7 @@
 | `AUTHORIZATION_CODE` | 邮箱`POP3/SMTP`服务授权码 | 否 |
 | `DINGDING_WEBHOOK` | 钉钉机器人`Webhook` | 否 |
 | `PUSHPLUS_TOKEN` | 微信公众号`pushplus` `token` | 否 |
+| `FEISHU_WEBHOOK` | 飞书机器人`Webhook` | 否 |
 
 ### 效果预览
 
@@ -40,7 +41,8 @@
 <p align="left">
   <img src="./docs/email.png" /></br></br>
   <img src="./docs/dingding.png" /></br></br>
-  <img src="./docs/pushplus.png" />
+  <img src="./docs/pushplus.png" /></br></br>
+  <img src="./docs/feishu.jpg" />
 </p>
 
 ## 第三方插件
