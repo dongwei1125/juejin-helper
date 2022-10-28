@@ -1,0 +1,24 @@
+const axios = require('axios')
+const { FEISHU_WEBHOOK } = require('../ENV.js')
+const SUCCESS_CODE = 0
+
+const feishu = async ({ title = '', content = '' } = {}) => {
+  try {
+    await axios
+      .post(FEISHU_WEBHOOK, {
+        msg_type: 'text',
+        content: {
+          text: content,
+        },
+      })
+      .then(response => {
+        if (response?.data.code !== SUCCESS_CODE) {
+          throw new Error(response?.data?.msg)
+        }
+      })
+  } catch (error) {
+    console.log(error.stack)
+  }
+}
+
+module.exports = feishu
