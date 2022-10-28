@@ -12,8 +12,7 @@ const feishu = async ({ title = '', content = '' } = {}) => {
         },
       })
       .then(response => {
-        console.log(response)
-        if (response?.data.code !== SUCCESS_CODE) {
+        if (response?.data.StatusCode !== SUCCESS_CODE) {
           throw new Error(response.data.msg)
         }
       })
