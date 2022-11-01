@@ -13,7 +13,7 @@ const dingding = async ({ title = '', content = '' } = {}) => {
         },
       })
       .then(response => {
-        if (response?.data.errcode !== SUCCESS_CODE) {
+        if (response?.data?.errcode !== SUCCESS_CODE) {
           throw new Error(response?.data?.errmsg)
         }
       })

@@ -12,7 +12,7 @@ const pushplus = async ({ title = '', content = '' } = {}) => {
         content,
       })
       .then(response => {
-        if (response?.data.code !== SUCCESS_CODE) {
+        if (response?.data?.code !== SUCCESS_CODE) {
           throw new Error(response?.data?.msg)
         }
       })

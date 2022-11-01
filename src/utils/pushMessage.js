@@ -1,40 +1,76 @@
-const dingding = require('./dingding.js')
 const email = require('./email.js')
 const pushplus = require('./pushplus.js')
-const { DINGDING_WEBHOOK, EMAIL, AUTHORIZATION_CODE, PUSHPLUS_TOKEN } = require('../ENV.js')
+const dingding = require('./dingding.js')
+const feishu = require('./feishu.js')
+const { EMAIL, AUTHORIZATION_CODE, PUSHPLUS_TOKEN, DINGDING_WEBHOOK, FEISHU_WEBHOOK } = require('../ENV.js')
 
 const pushMessage = ({ type, message }) => {
   console.log(message)
 
-  DINGDING_WEBHOOK && dingding(formatToMarkdown({ type, message }))
-  EMAIL && AUTHORIZATION_CODE && email(formatToHTML({ type, message }))
-  PUSHPLUS_TOKEN && pushplus(formatToMarkdown({ type, message }))
+  EMAIL &&
+    AUTHORIZATION_CODE &&
+    email(
+      formatter(type, message, {
+        style: 'html',
+        bold: true,
+      })
+    )
+  PUSHPLUS_TOKEN &&
+    pushplus(
+      formatter(type, message, {
+        style: 'markdown',
+        bold: true,
+        wordWrap: true,
+      })
+    )
+  DINGDING_WEBHOOK &&
+    dingding(
+      formatter(type, message, {
+        style: 'markdown',
+        bold: true,
+        wordWrap: true,
+      })
+    )
+  FEISHU_WEBHOOK &&
+    feishu(
+      formatter(type, message, {
+        style: 'markdown',
+        bold: true,
+      })
+    )
 }
 
-const formatToMarkdown = ({ type, message }) => {
-  if (type === 'info') {
-    // 加号或数字加粗
-    message = message.replace(/\+?\d+/g, ' **$&** ')
+/**
+ * @desc 格式化消息内容
+ * @param type 类型
+ * @param message 内容
+ * @param options 配置
+ * {
+ *   style: String 风格
+ *   bold: Boolean 是否数字加粗
+ *   wordWrap: Boolean 是否换行
+ * }
+ * @returns {Object}
+ * {
+ *   title: String 标题
+ *   content: String 内容
+ * }
+ */
+const formatter = (type = 'info', message = '', options = {}) => {
+  const { style = 'html', bold = false, wordWrap = false } = options
+
+  if (bold && type === 'info') {
+    style === 'html' && (message = message.replace(/\+?\d+/g, ' <b>$&</b> '))
+    style === 'markdown' && (message = message.replace(/\+?\d+/g, ' **$&** '))
   }
 
-  // 引用换行
-  message = message.replace(/\n/g, ' \n\n > ').replace(/ +/g, ' ')
+  if (wordWrap) {
+    style === 'markdown' && (message = message.replace(/\n/g, ' \n\n > ').replace(/ +/g, ' '))
+  }
 
   return {
     title: `签到${type === 'info' ? '成功 🎉' : '失败 💣'}`,
-    content: message,
-  }
-}
-
-const formatToHTML = ({ type, message }) => {
-  if (type === 'info') {
-    // 加号或数字加粗
-    message = message.replace(/\+?\d+/g, ' <b>$&</b> ')
-  }
-
-  return {
-    title: `签到${type === 'info' ? '成功 🎉' : '失败 💣'}`,
-    content: `<pre>${message}</pre>`,
+    content: style === 'html' ? `<pre>${message}</pre>` : message,
   }
 }
 
