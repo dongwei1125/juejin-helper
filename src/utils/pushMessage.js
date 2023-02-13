@@ -10,7 +10,7 @@ const pushMessage = ({ type, message }) => {
   DINGDING_WEBHOOK && dingding(formatToMarkdown({ type, message }))
   EMAIL && AUTHORIZATION_CODE && email(formatToHTML({ type, message }))
   PUSHPLUS_TOKEN && pushplus(formatToMarkdown({ type, message }))
-  SEVER_TOKEN && severPush(formatToMarkdown({ type, message }))
+  severPush(formatToMarkdown({ type, message }))
 
 }
 
