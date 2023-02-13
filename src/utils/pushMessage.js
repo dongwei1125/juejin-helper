@@ -2,7 +2,7 @@ const dingding = require('./dingding.js')
 const email = require('./email.js')
 const pushplus = require('./pushplus.js')
 const severPush = require('./severPush.js')
-const { DINGDING_WEBHOOK, EMAIL, AUTHORIZATION_CODE, PUSHPLUS_TOKEN } = require('../ENV.js')
+const { DINGDING_WEBHOOK, EMAIL, AUTHORIZATION_CODE, PUSHPLUS_TOKEN, SEVER_TOKEN } = require('../ENV.js')
 
 const pushMessage = ({ type, message }) => {
   console.log(message)
@@ -10,7 +10,8 @@ const pushMessage = ({ type, message }) => {
   DINGDING_WEBHOOK && dingding(formatToMarkdown({ type, message }))
   EMAIL && AUTHORIZATION_CODE && email(formatToHTML({ type, message }))
   PUSHPLUS_TOKEN && pushplus(formatToMarkdown({ type, message }))
-  severPush(formatToMarkdown({ type, message }))
+  SEVER_TOKEN && severPush(formatToMarkdown({ type, message }))
+
 }
 
 const formatToMarkdown = ({ type, message }) => {
