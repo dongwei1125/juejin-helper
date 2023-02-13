@@ -4,6 +4,7 @@ const SUCCESS_CODE = 200
 
 const pushplus = async ({ title = '', content = '' } = {}) => {
   const url = 'https://sctapi.ftqq.com/'+ SEVER_TOKEN +'.send';
+   console.log('哈哈哈哈哈哈哈'+url)
   try {
     await axios
       .post(url, data={
