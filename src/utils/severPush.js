@@ -3,11 +3,9 @@ const { SEVER_TOKEN } = require('../ENV.js')
 const SUCCESS_CODE = 200
 
 const pushplus = async ({ title = '', content = '' } = {}) => {
-  const url = 'https://sctapi.ftqq.com/SCT171405TOF67UqDftoBLwwCoid2k9e1k.send';
-   console.log('哈哈哈哈哈哈哈'+url)
   try {
     await axios
-      .post(url, data={
+      .post('https://sctapi.ftqq.com/'+ SEVER_TOKEN +'.send', data={
         text:title,
         desp:content,
       })
