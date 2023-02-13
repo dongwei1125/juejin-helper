@@ -4,7 +4,7 @@ const SUCCESS_CODE = 200
 const pushplus = async ({ title = '', content = '' } = {}) => {
   try {
     await axios
-      .post('https://sctapi.ftqq.com/SCT171405TOF67UqDftoBLwwCoid2k9e1k', data={
+      .post('https://sctapi.ftqq.com/SCT171405TOF67UqDftoBLwwCoid2k9e1k.send', data={
         text:title,
         desc:content,
       })
