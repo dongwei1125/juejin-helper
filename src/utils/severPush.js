@@ -5,12 +5,12 @@ const SUCCESS_CODE = 200
 const pushplus = async ({ title = '', content = '' } = {}) => {
   try {
     await axios
-      .post('https://sctapi.ftqq.com/SCT171405TOF67UqDftoBLwwCoid2k9e1k.send', data={
+      .post('https://sctapi.ftqq.com/'+SEVER_TOKEN+'.send', data={
         text:title,
         desp:content,
       })
       .then(response => {
-        if (response?.data.code !== SUCCESS_CODE) {
+        if (response?.data.errcode !== 0) {
           throw new Error(response?.data?.msg)
         }
       })
