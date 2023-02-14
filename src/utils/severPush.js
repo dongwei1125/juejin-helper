@@ -10,7 +10,7 @@ const pushplus = async ({ title = '', content = '' } = {}) => {
         desp:content,
       })
       .then(response => {
-        if (response?.data.errcode !== 0) {
+        if (response?.data?.errcode !== 0) {
           throw new Error(response?.data?.msg)
         }
       })
@@ -19,4 +19,4 @@ const pushplus = async ({ title = '', content = '' } = {}) => {
   }
 }
 
-module.exports = pushplus
+module.exports = severPush
