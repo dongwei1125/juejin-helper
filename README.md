@@ -30,6 +30,7 @@
 | --- | --- | --- |
 | `COOKIE` | 稀土掘金用户`cookie` | 是 |
 | `EMAIL` | 邮箱地址 | 否 |
+| `SMTP_SERVER` | 邮箱SMTP服务器地址 | 否 |
 | `AUTHORIZATION_CODE` | 邮箱`POP3/SMTP`服务授权码 | 否 |
 | `PUSHPLUS_TOKEN` | 微信公众号`pushplus` `token` | 否 |
 | `DINGDING_WEBHOOK` | 钉钉机器人`Webhook` | 否 |
