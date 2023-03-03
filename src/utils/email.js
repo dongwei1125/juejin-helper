@@ -1,11 +1,14 @@
 const nodemailer = require('nodemailer')
-const { EMAIL, AUTHORIZATION_CODE } = require('../ENV.js')
+const { EMAIL, AUTHORIZATION_CODE, SMTP_SERVER } = require('../ENV.js')
 
 const email = async ({ title = '', content = '' } = {}) => {
+
   try {
     const suffix = /@(?<suffix>.*)/.exec(EMAIL).groups.suffix
     const options = {
-      host: `smtp.${suffix}`,
+      host: !!SMTP_SERVER
+              ? SMTP_SERVER
+              : `smtp.${suffix}`,
       auth: {
         user: EMAIL,
         pass: AUTHORIZATION_CODE,
