@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-	TZ: Asia/Shanghai # 设置当前环境时区
+  TZ: Asia/Shanghai # 设置当前环境时区
 jobs:
   growth:
     runs-on: ubuntu-latest
