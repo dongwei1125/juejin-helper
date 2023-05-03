@@ -1,7 +1,8 @@
 const Juejin = require('./juejin/index.js')
+const Readerm = require('./readerm/index.js')
 const pushMessage = require('./utils/pushMessage.js')
 const { wait, getRandomArbitrary } = require('./utils/utils.js')
-const { COOKIE } = require('./ENV.js')
+const { COOKIE,READERM } = require('./ENV.js')
 
 const growth = {
   userName: '', // 用户名
@@ -35,7 +36,7 @@ ${growth.collectedBug ? `收集 Bug +${growth.collectBugCount}` : '暂无可收�
 `.trim()
 }
 
-const main = async () => {
+const juejinMain = async () => {
   const juejin = new Juejin()
 
   // 登录
@@ -116,7 +117,30 @@ const main = async () => {
   })
 }
 
-main().catch(error => {
+const readermMain =async ()=>{
+  const readerm=new Readerm();
+  if(!READERM)return;
+  await readerm.login(READERM);
+  const result = await readerm.checkIn();
+  if(!result.data.msg)return;
+  pushMessage({
+    type: 'info',
+    message: `
+    已签到VPN，${result.data.msg}
+    `.trim(),
+  })
+}
+
+
+
+juejinMain().catch(error => {
+  pushMessage({
+    type: 'error',
+    message: error.stack,
+  })
+  
+})
+readermMain().catch(error => {
   pushMessage({
     type: 'error',
     message: error.stack,
