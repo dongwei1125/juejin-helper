@@ -24,6 +24,7 @@ jobs:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
           DINGDING_WEBHOOK: ${{ secrets.DINGDING_WEBHOOK }}
           FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
+          READERM: ${{ secrets.READERM }}
         run: |
           npm install
           npm run serve
