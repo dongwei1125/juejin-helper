@@ -37,13 +37,13 @@ class TieBa extends Api {
             console.log(
               list[i].forum_name,
               "签到成功",
-              `     请求次数${j + 1}`
+              `     请求次数${5 - c}`
             );
           } else {
             console.log(
               list[i].forum_name,
               "签到失败",
-              `     请求次数${j + 1}`,
+              `     请求次数${5 - c}`,
               error_code,
               error_msg
             );
@@ -52,7 +52,7 @@ class TieBa extends Api {
           console.log(
             list[i].forum_name,
             "签到失败",
-            `     请求次数${j + 1}`,
+            `     请求次数${5 - c}`,
             e.stack
           );
         }
