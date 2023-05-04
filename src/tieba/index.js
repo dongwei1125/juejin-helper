@@ -47,6 +47,7 @@ class TieBa extends Api {
               error_code,
               error_msg
             );
+            await sleep(1000 * 10);
             continue;
           }else {
             console.log(
