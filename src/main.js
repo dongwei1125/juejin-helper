@@ -1,8 +1,9 @@
 const Juejin = require('./juejin/index.js')
 const Readerm = require('./readerm/index.js')
+const Tieba = require('./tieba/index.js')
 const pushMessage = require('./utils/pushMessage.js')
 const { wait, getRandomArbitrary } = require('./utils/utils.js')
-const { COOKIE,READERM } = require('./ENV.js')
+const { COOKIE,READERM,BDUSS } = require('./ENV.js')
 
 const growth = {
   userName: '', // 用户名
@@ -133,6 +134,23 @@ const readermMain =async ()=>{
 
 
 
+const tiebaMain = async ()=>{
+  const tieba=new Tieba();
+  if(!BDUSS)return;
+  await tieba.init(BDUSS);
+  const result = await tieba.checkIn();
+
+  pushMessage({
+    type: 'info',
+    message: `
+    已签到百度贴吧
+    共：${result.all} 个
+    成功：${result.success} 个
+    失败：${result.fail} 个
+    `.trim(),
+  })
+}
+
 juejinMain().catch(error => {
   pushMessage({
     type: 'error',
@@ -141,6 +159,13 @@ juejinMain().catch(error => {
   
 })
 readermMain().catch(error => {
+  pushMessage({
+    type: 'error',
+    message: error.stack,
+  })
+})
+
+tiebaMain().catch(error => {
   pushMessage({
     type: 'error',
     message: error.stack,
