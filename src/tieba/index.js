@@ -24,7 +24,7 @@ class TieBa extends Api {
       fail = 0;
     let list = [...this.followList],
       temp = [],
-      c = 5;
+      c = 3;
     while (c-- > 0 && list.length !== 0) {
       for (let i = 0; i < list.length; i++) {
         let ok = false;
@@ -37,13 +37,22 @@ class TieBa extends Api {
             console.log(
               list[i].forum_name,
               "签到成功",
-              `     请求次数${5 - c}`
+              `     请求次数${3 - c}`
             );
-          } else {
+          } else if(error_code==='340006'){
             console.log(
               list[i].forum_name,
               "签到失败",
-              `     请求次数${5 - c}`,
+              `     请求次数${3 - c}`,
+              error_code,
+              error_msg
+            );
+            continue;
+          }else {
+            console.log(
+              list[i].forum_name,
+              "签到失败",
+              `     请求次数${3 - c}`,
               error_code,
               error_msg
             );
@@ -52,7 +61,7 @@ class TieBa extends Api {
           console.log(
             list[i].forum_name,
             "签到失败",
-            `     请求次数${5 - c}`,
+            `     请求次数${3 - c}`,
             e.stack
           );
         }
@@ -64,9 +73,9 @@ class TieBa extends Api {
       }
       list = temp;
       temp = [];
-      if (list.length > 0 && c > 0) await sleep(1000 * 60 * 5);
+      if (list.length > 0 && c > 0) await sleep(1000 * 60 * 3);
     }
-    fail = list.length;
+    fail = all-success;
     return {
       success,
       all,
