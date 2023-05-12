@@ -1,44 +1,51 @@
-const email = require('./email.js')
-const pushplus = require('./pushplus.js')
-const dingding = require('./dingding.js')
-const feishu = require('./feishu.js')
-const { EMAIL, AUTHORIZATION_CODE, PUSHPLUS_TOKEN, DINGDING_WEBHOOK, FEISHU_WEBHOOK } = require('../ENV.js')
+const email = require("./email.js");
+const pushplus = require("./pushplus.js");
+const dingding = require("./dingding.js");
+const feishu = require("./feishu.js");
+const {
+  EMAIL,
+  AUTHORIZATION_CODE,
+  PUSHPLUS_TOKEN,
+  DINGDING_WEBHOOK,
+  FEISHU_WEBHOOK,
+} = require("../ENV.js");
 
-const pushMessage = ({ type, message }) => {
-  console.log(message)
+const pushMessage = ({ type, message, title = undefined }) => {
+  console.log(message);
 
   EMAIL &&
     AUTHORIZATION_CODE &&
     email(
       formatter(type, message, {
-        style: 'html',
+        style: "html",
         bold: true,
       })
-    )
+    );
   PUSHPLUS_TOKEN &&
     pushplus(
       formatter(type, message, {
-        style: 'markdown',
+        style: "markdown",
         bold: true,
         wordWrap: true,
       })
-    )
+    );
   DINGDING_WEBHOOK &&
     dingding(
       formatter(type, message, {
-        style: 'markdown',
+        style: "markdown",
         bold: true,
         wordWrap: true,
       })
-    )
+    );
   FEISHU_WEBHOOK &&
     feishu(
       formatter(type, message, {
-        style: 'markdown',
+        style: "markdown",
         bold: true,
+        title,
       })
-    )
-}
+    );
+};
 
 /**
  * @desc 格式化消息内容
@@ -56,22 +63,28 @@ const pushMessage = ({ type, message }) => {
  *   content: String 内容
  * }
  */
-const formatter = (type = 'info', message = '', options = {}) => {
-  const { style = 'html', bold = false, wordWrap = false } = options
+const formatter = (type = "info", message = "", options = {}) => {
+  const {
+    style = "html",
+    bold = false,
+    wordWrap = false,
+    title = `签到${type === "info" ? "成功 🎉" : "失败 💣"}`,
+  } = options;
 
-  if (bold && type === 'info') {
-    style === 'html' && (message = message.replace(/\+?\d+/g, ' <b>$&</b> '))
-    style === 'markdown' && (message = message.replace(/\+?\d+/g, ' **$&** '))
+  if (bold && type === "info") {
+    style === "html" && (message = message.replace(/\+?\d+/g, " <b>$&</b> "));
+    style === "markdown" && (message = message.replace(/\+?\d+/g, " **$&** "));
   }
 
   if (wordWrap) {
-    style === 'markdown' && (message = message.replace(/\n/g, ' \n\n > ').replace(/ +/g, ' '))
+    style === "markdown" &&
+      (message = message.replace(/\n/g, " \n\n > ").replace(/ +/g, " "));
   }
 
   return {
-    title: `签到${type === 'info' ? '成功 🎉' : '失败 💣'}`,
-    content: style === 'html' ? `<pre>${message}</pre>` : message,
-  }
-}
+    title,
+    content: style === "html" ? `<pre>${message}</pre>` : message,
+  };
+};
 
-module.exports = pushMessage
+module.exports = pushMessage;

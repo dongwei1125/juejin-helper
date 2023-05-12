@@ -7,4 +7,5 @@ module.exports = {
   DINGDING_WEBHOOK: process.env.DINGDING_WEBHOOK,
   FEISHU_WEBHOOK: process.env.FEISHU_WEBHOOK,
   BDUSS: process.env.BDUSS,
+  MIHAYOU: process.env.MIHAYOU,
 };

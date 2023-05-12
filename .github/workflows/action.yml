@@ -26,6 +26,7 @@ jobs:
           DINGDING_WEBHOOK: ${{ secrets.DINGDING_WEBHOOK }}
           FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
           READERM: ${{ secrets.READERM }}
+          MIHAYOU: ${{ secrets.MIHAYOU }}
         run: |
           npm install
           npm run serve
