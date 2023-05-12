@@ -11,10 +11,13 @@ class YuanShen extends Api {
     super();
   }
 
-  async init(BDUSS) {
+  async init() {
     await this.usertInfoRequest();
+    console.log('原神用户信息获取成功');
     await this.signInfoRequest();
+    console.log('原神签到信息获取成功');
     await this.awardsRequest();
+    console.log('原神奖品信息获取成功');
   }
 
   async checkIn() {

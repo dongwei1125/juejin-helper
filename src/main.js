@@ -168,6 +168,7 @@ const yuanshenMain = async () => {
 ${e.stack}
       `.trim(),
     });
+    return;
   }
   const result = await yuanShen.checkIn();
 
