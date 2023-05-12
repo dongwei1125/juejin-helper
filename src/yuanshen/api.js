@@ -23,18 +23,21 @@ class Api {
 
   async usertInfoRequest() {
     const res = await this.http.get(this.GET_USER_INFO);
+    console.log(res);
     this.userInfo = res.data.data.list[0];
     return res.data.data.list[0];
   }
 
   async signInfoRequest() {
     const res = await http.get(this.GET_SIGN_INFO + this.userInfo.game_uid);
+    console.log(res);
     this.signInfo = res.data.data;
     return res.data.data;
   }
 
   async awardsRequest() {
     const res = await http.get(this.GET_SIGN_AWARDS);
+    console.log(res);
     this.awardsInfo = res.data.data;
     return res.data.data;
   }

@@ -38,12 +38,6 @@ class YuanShen extends Api {
 `,
       };
     }
-    if (!this.signInfo.first_bind) {
-      return {
-        status: "fail",
-        message: "当前账号未绑定原神角色",
-      };
-    }
 
     const result = await this.signRequest();
 
