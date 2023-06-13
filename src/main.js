@@ -21,6 +21,7 @@ const growth = {
 }
 
 const message = () => {
+   console.log(growth)
   return `
 Hello ${growth.userName}
 ${growth.checkedIn ? `签到 +${growth.incrPoint} 矿石` : '今日已签到'}
@@ -37,7 +38,7 @@ ${growth.collectedBug ? `收集 Bug +${growth.collectBugCount}` : '暂无可收�
 
 const main = async () => {
   const juejin = new Juejin()
-
+  console.log('111111')
   // 登录
   try {
     await juejin.login(COOKIE)
@@ -108,6 +109,7 @@ const main = async () => {
     growth.collectedBug = true
   }
 
+   console.log('1111112222')
   pushMessage({
     type: 'info',
     message: message(),
