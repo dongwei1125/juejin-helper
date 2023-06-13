@@ -47,7 +47,7 @@ const main = async () => {
   } catch {
     throw new Error('登录失败, 请尝试更新 Cookies')
   }
-
+console.log('签到')
   // 签到
   const checkIn = await juejin.getTodayStatus()
 
@@ -64,7 +64,7 @@ const main = async () => {
 
   growth.contCount = counts.cont_count
   growth.sumCount = counts.sum_count
-
+console.log('沾喜气')
   // 沾喜气
   const lotteryHistory = await juejin.getLotteryHistory()
   const lotteries = lotteryHistory.lotteries || []
@@ -77,7 +77,7 @@ const main = async () => {
     growth.dipValue = dipLuckyResult.dip_value
     growth.luckyValue = dipLuckyResult.total_value
   }
-
+console.log('免费抽奖')
   // 免费抽奖
   const lotteryConfig = await juejin.getLotteryConfig()
   growth.freeCount = lotteryConfig.free_count || 0
@@ -89,6 +89,7 @@ const main = async () => {
     growth.lotteryName = lottery.lottery_name
   }
 
+  console.log('BugFix')
   // BugFix
   const notCollectBug = await juejin.getNotCollectBug()
 
@@ -99,7 +100,7 @@ const main = async () => {
         await wait(getRandomArbitrary(1000, 1500))
       }
     })
-
+console.log('BugFix11122')
     for (const request of requests) {
       await request()
 
