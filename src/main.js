@@ -89,30 +89,30 @@ console.log('免费抽奖')
     growth.lotteryName = lottery.lottery_name
   }
 
-  console.log('BugFix')
-  // BugFix
-  const notCollectBug = await juejin.getNotCollectBug()
- console.log('BugFix123')
-   console.log(notCollectBug)
-  if (notCollectBug.length > 0) {
-    const requests = notCollectBug.map(bug => {
-       console.log(bug)
-      return async () => {
-        await juejin.collectBug(bug)
-        await wait(getRandomArbitrary(1000, 1500))
-      }
-    })
-console.log('BugFix11122')
-    for (const request of requests) {
-      await request()
+//   console.log('BugFix')
+//   // BugFix
+//   const notCollectBug = await juejin.getNotCollectBug()
+//  console.log('BugFix123')
+//    console.log(notCollectBug)
+//   if (notCollectBug.length > 0) {
+//     const requests = notCollectBug.map(bug => {
+//        console.log(bug)
+//       return async () => {
+//         await juejin.collectBug(bug)
+//         await wait(getRandomArbitrary(1000, 1500))
+//       }
+//     })
+// console.log('BugFix11122')
+//     for (const request of requests) {
+//       await request()
 
-      growth.collectBugCount++
-    }
+//       growth.collectBugCount++
+//     }
 
-    growth.collectedBug = true
-  }
+//     growth.collectedBug = true
+//   }
 
-   console.log('1111112222')
+//    console.log('1111112222')
   pushMessage({
     type: 'info',
     message: message(),
