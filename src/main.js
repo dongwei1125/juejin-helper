@@ -92,9 +92,11 @@ console.log('免费抽奖')
   console.log('BugFix')
   // BugFix
   const notCollectBug = await juejin.getNotCollectBug()
-
+ console.log('BugFix123')
+   console.log(notCollectBug)
   if (notCollectBug.length > 0) {
     const requests = notCollectBug.map(bug => {
+       console.log(bug)
       return async () => {
         await juejin.collectBug(bug)
         await wait(getRandomArbitrary(1000, 1500))
