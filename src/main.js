@@ -31,7 +31,6 @@ ${growth.dippedLucky ? '今日已经沾过喜气' : `沾喜气 +${growth.dipValu
 当前幸运值 ${growth.luckyValue}
 免费抽奖次数 ${growth.freeCount}
 ${growth.freeDrawed ? `恭喜抽中 ${growth.lotteryName}` : '今日已免费抽奖'}
-${growth.collectedBug ? `收集 Bug +${growth.collectBugCount}` : '暂无可收集 Bug'}
 `.trim()
 }
 
@@ -89,26 +88,6 @@ const main = async () => {
 
   // 当前矿石数
   growth.sumPoint = await juejin.getCurrentPoint()
-
-  // BugFix
-  const notCollectBug = await juejin.getNotCollectBug()
-
-  if (notCollectBug.length > 0) {
-    const requests = notCollectBug.map(bug => {
-      return async () => {
-        await juejin.collectBug(bug)
-        await wait(getRandomArbitrary(1000, 1500))
-      }
-    })
-
-    for (const request of requests) {
-      await request()
-
-      growth.collectBugCount++
-    }
-
-    growth.collectedBug = true
-  }
 
   pushMessage({
     type: 'info',
