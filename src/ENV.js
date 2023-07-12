@@ -5,4 +5,5 @@ module.exports = {
   PUSHPLUS_TOKEN: process.env.PUSHPLUS_TOKEN,
   DINGDING_WEBHOOK: process.env.DINGDING_WEBHOOK,
   FEISHU_WEBHOOK: process.env.FEISHU_WEBHOOK,
+  SMTP_SERVER: process.env.SMTP_SERVER,
 }
