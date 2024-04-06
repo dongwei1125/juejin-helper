@@ -10,8 +10,6 @@ const growth = {
   sumPoint: 0, // 总矿石数
   contCount: 0, // 连续签到天数
   sumCount: 0, // 累计签到天数
-  dippedLucky: false, // 是否沾喜气
-  dipValue: 0, // 幸运值
   luckyValue: 0, // 总幸运值
   freeCount: 0, // 免费抽奖次数
   freeDrawed: false, // 是否免费抽奖
@@ -27,7 +25,6 @@ ${growth.checkedIn ? `签到 +${growth.incrPoint} 矿石` : '今日已签到'}
 当前矿石数 ${growth.sumPoint}
 连续签到天数 ${growth.contCount}
 累计签到天数 ${growth.sumCount}
-${growth.dippedLucky ? '今日已经沾过喜气' : `沾喜气 +${growth.dipValue} 幸运值`}
 当前幸运值 ${growth.luckyValue}
 免费抽奖次数 ${growth.freeCount}
 ${growth.freeDrawed ? `恭喜抽中 ${growth.lotteryName}` : '今日已免费抽奖'}
@@ -62,19 +59,6 @@ const main = async () => {
   growth.contCount = counts.cont_count
   growth.sumCount = counts.sum_count
 
-  // 沾喜气
-  const lotteryHistory = await juejin.getLotteryHistory()
-  const lotteries = lotteryHistory.lotteries || []
-
-  if (lotteries.length > 0) {
-    const [firstLottery] = lotteries
-    const dipLuckyResult = await juejin.dipLucky(firstLottery.history_id)
-
-    growth.dippedLucky = dipLuckyResult.has_dip
-    growth.dipValue = dipLuckyResult.dip_value
-    growth.luckyValue = dipLuckyResult.total_value
-  }
-
   // 免费抽奖
   const lotteryConfig = await juejin.getLotteryConfig()
   growth.freeCount = lotteryConfig.free_count || 0
@@ -88,6 +72,10 @@ const main = async () => {
 
   // 当前矿石数
   growth.sumPoint = await juejin.getCurrentPoint()
+
+  // 当前幸运值
+  const luckyResult = await juejin.getLucky()
+  growth.luckyValue = luckyResult.total_value
 
   pushMessage({
     type: 'info',
