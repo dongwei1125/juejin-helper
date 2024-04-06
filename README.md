@@ -22,6 +22,14 @@
 
 > 为保证脚本更好的运行，`Fork`仓库后请根据 [指南](https://juejin.cn/post/7108615649777156104#heading-14) 手动启用一次
 
+## 异常
+
+&emsp;&emsp;若仓库在`60`天内如果没有活动，工作流将被禁止，暂停签到。请手动点击`Enable workflow`以再次启用工作流。
+
+<p align="left">
+  <img src="./docs/60.png" />
+</p>
+
 ## 使用
 
 ### 环境机密 Secrets
