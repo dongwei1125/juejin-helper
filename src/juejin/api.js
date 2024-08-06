@@ -1,7 +1,7 @@
 /*
  * @Author: wangjiaxiang
  * @Date: 2024-08-06 17:40:40
- * @LastEditTime: 2024-08-06 18:26:19
+ * @LastEditTime: 2024-08-06 18:45:42
  * @LastEditors: wangjiaxiang
  * @Description: 
  * @FilePath: /juejin-helper/src/juejin/api.js
@@ -65,7 +65,7 @@ class Api {
    * }
    */
   getLotteryConfig() {
-    console.log('获取抽奖次数',MS_TOKEN, A_BOGUS,UUID,COOKIE)
+    console.log('获取抽奖次数')
     return this.http.get(`/growth_api/v1/lottery_config/get?aid=2608&uuid=${UUID}&spider=0&msToken=${MS_TOKEN}&a_bogus=${A_BOGUS}`)
   }
 
