@@ -1,14 +1,14 @@
 /*
  * @Author: wangjiaxiang
  * @Date: 2024-08-06 17:40:40
- * @LastEditTime: 2024-08-06 18:18:03
+ * @LastEditTime: 2024-08-06 18:26:19
  * @LastEditors: wangjiaxiang
  * @Description: 
  * @FilePath: /juejin-helper/src/juejin/api.js
  * 
  */
 const http = require('./httpInstance.js')
-const { MS_TOKEN, A_BOGUS,UUID } = require('../ENV.js')
+const { MS_TOKEN, A_BOGUS,UUID,COOKIE } = require('../ENV.js')
 class Api {
   constructor() {
     this.http = http
@@ -65,7 +65,7 @@ class Api {
    * }
    */
   getLotteryConfig() {
-    console.log('获取抽奖次数',MS_TOKEN, A_BOGUS,UUID)
+    console.log('获取抽奖次数',MS_TOKEN, A_BOGUS,UUID,COOKIE)
     return this.http.get(`/growth_api/v1/lottery_config/get?aid=2608&uuid=${UUID}&spider=0&msToken=${MS_TOKEN}&a_bogus=${A_BOGUS}`)
   }
 
