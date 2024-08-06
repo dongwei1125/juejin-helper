@@ -1,5 +1,14 @@
+/*
+ * @Author: wangjiaxiang
+ * @Date: 2024-08-06 17:40:40
+ * @LastEditTime: 2024-08-06 17:58:20
+ * @LastEditors: wangjiaxiang
+ * @Description: 
+ * @FilePath: /juejin-helper/src/juejin/api.js
+ * 
+ */
 const http = require('./httpInstance.js')
-
+const { MS_TOKEN, A_BOGUS,UUID } = require('../ENV.js')
 class Api {
   constructor() {
     this.http = http
@@ -22,7 +31,7 @@ class Api {
    * Boolean 是否签到
    */
   getTodayStatus() {
-    return this.http.get('/growth_api/v1/get_today_status')
+    return this.http.get('/growth_api/v2/get_today_status')
   }
 
   /**
@@ -56,7 +65,7 @@ class Api {
    * }
    */
   getLotteryConfig() {
-    return this.http.get('/growth_api/v1/lottery_config/get')
+    return this.http.get(`/growth_api/v1/lottery_config/get?aid=2608&uuid=${UUID}&spider=0&msToken=${MS_TOKEN}&a_bogus=${A_BOGUS}`)
   }
 
   /**

@@ -4,12 +4,10 @@ const SUCCESS_CODE = 0
 const http = axios.create({
   baseURL: 'https://api.juejin.cn',
   headers: {
-    'content-type': 'application/json',
-    'referer': 'https://juejin.cn/',
-    'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="102", "Google Chrome";v="102"',
-    'sec-ch-ua-mobile': '?0',
-    'sec-ch-ua-platform': 'Windows',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
+    'content-type': 'application/json', 
+    'origin': 'https://juejin.cn', 
+    'referer': 'https://juejin.cn/', 
+    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36'
   },
 })
 

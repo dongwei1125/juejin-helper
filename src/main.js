@@ -1,3 +1,12 @@
+/*
+ * @Author: wangjiaxiang
+ * @Date: 2024-08-06 17:40:40
+ * @LastEditTime: 2024-08-06 17:58:36
+ * @LastEditors: wangjiaxiang
+ * @Description: 
+ * @FilePath: /juejin-helper/src/main.js
+ * 
+ */
 const Juejin = require('./juejin/index.js')
 const pushMessage = require('./utils/pushMessage.js')
 const { wait, getRandomArbitrary } = require('./utils/utils.js')
@@ -45,8 +54,7 @@ const main = async () => {
 
   // 签到
   const checkIn = await juejin.getTodayStatus()
-
-  if (!checkIn) {
+  if (!checkIn.check_in_done) {
     const checkInResult = await juejin.checkIn()
 
     growth.checkedIn = true
@@ -61,6 +69,7 @@ const main = async () => {
 
   // 免费抽奖
   const lotteryConfig = await juejin.getLotteryConfig()
+  console.log('抽奖次数', lotteryConfig.free_count)
   growth.freeCount = lotteryConfig.free_count || 0
 
   if (growth.freeCount > 0) {
