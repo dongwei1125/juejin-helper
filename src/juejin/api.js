@@ -1,7 +1,7 @@
 /*
  * @Author: wangjiaxiang
  * @Date: 2024-08-06 17:40:40
- * @LastEditTime: 2024-08-06 19:00:53
+ * @LastEditTime: 2024-08-06 19:05:36
  * @LastEditors: wangjiaxiang
  * @Description: 
  * @FilePath: /juejin-helper/src/juejin/api.js
@@ -66,7 +66,7 @@ class Api {
    */
   getLotteryConfig() {
     console.log('获取抽奖次数')
-    return this.http.get(`/growth_api/v1/lottery_config/get?aid=2608&uuid=7037344485533779463&spider=0&msToken=aL3g9UniKSuTGY5WhOnF2SJKlfC99sJKWC5JzaCCCV8YjhVPxwFKCiP2iyI5-h_uA1oYqCGitKBrpjm6-AxZMplsMPMxcA9jERaweD8OZWgN1r6m2C9wPpdfJ-R_PQrUCQ%3D%3D&a_bogus=Q6Um6O2eMsm1jf3y%2F7Dz9yimyZ60YWRRgZEFafsE-0wL`)
+    return this.http.get(`/growth_api/v1/lottery_config/get?aid=2608&uuid=${UUID}&spider=0&msToken=${MS_TOKEN}&a_bogus=${A_BOGUS}`)
   }
 
   /**
