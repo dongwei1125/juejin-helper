@@ -1,7 +1,7 @@
 /*
  * @Author: wangjiaxiang
  * @Date: 2024-08-06 17:40:40
- * @LastEditTime: 2024-08-06 17:58:36
+ * @LastEditTime: 2024-08-07 09:35:30
  * @LastEditors: wangjiaxiang
  * @Description: 
  * @FilePath: /juejin-helper/src/main.js
@@ -54,9 +54,9 @@ const main = async () => {
 
   // 签到
   const checkIn = await juejin.getTodayStatus()
+  
   if (!checkIn.check_in_done) {
     const checkInResult = await juejin.checkIn()
-
     growth.checkedIn = true
     growth.incrPoint = checkInResult.incr_point
   }

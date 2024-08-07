@@ -1,7 +1,7 @@
 /*
  * @Author: wangjiaxiang
  * @Date: 2024-08-06 17:40:40
- * @LastEditTime: 2024-08-06 19:05:36
+ * @LastEditTime: 2024-08-07 09:36:10
  * @LastEditors: wangjiaxiang
  * @Description: 
  * @FilePath: /juejin-helper/src/juejin/api.js
@@ -42,7 +42,7 @@ class Api {
    * }
    */
   checkIn() {
-    return this.http.post('/growth_api/v1/check_in')
+    return this.http.post(`/growth_api/v1/check_in?aid=2608&uuid=${UUID}&spider=0&msToken=${MS_TOKEN}&a_bogus=${A_BOGUS}`)
   }
 
   /**
@@ -77,7 +77,7 @@ class Api {
    * }
    */
   drawLottery() {
-    return this.http.post('/growth_api/v1/lottery/draw')
+    return this.http.post(`/growth_api/v1/lottery/draw?aid=2608&uuid=${UUID}&spider=0&msToken=${MS_TOKEN}&a_bogus=${A_BOGUS}`)
   }
 
   /**
