@@ -1,5 +1,4 @@
 const http = require('./httpInstance.js')
-
 class Api {
   constructor() {
     this.http = http
@@ -22,7 +21,7 @@ class Api {
    * Boolean 是否签到
    */
   getTodayStatus() {
-    return this.http.get('/growth_api/v1/get_today_status')
+    return this.http.get('/growth_api/v2/get_today_status')
   }
 
   /**
@@ -33,7 +32,7 @@ class Api {
    * }
    */
   checkIn() {
-    return this.http.post('/growth_api/v1/check_in')
+    return this.http.post(`/growth_api/v1/check_in?aid=`)
   }
 
   /**
@@ -56,18 +55,7 @@ class Api {
    * }
    */
   getLotteryConfig() {
-    return this.http.get('/growth_api/v1/lottery_config/get')
-  }
-
-  /**
-   * @desc 抽奖
-   * @returns {Promise<*>}
-   * {
-   *   lottery_name: String 奖品名称
-   * }
-   */
-  drawLottery() {
-    return this.http.post('/growth_api/v1/lottery/draw')
+    return this.http.get(`/growth_api/v1/lottery_config/get?aid=`)
   }
 
   /**

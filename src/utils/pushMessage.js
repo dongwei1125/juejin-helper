@@ -15,6 +15,7 @@ const pushMessage = ({ type, message }) => {
         bold: true,
       })
     )
+
   PUSHPLUS_TOKEN &&
     pushplus(
       formatter(type, message, {
@@ -23,6 +24,7 @@ const pushMessage = ({ type, message }) => {
         wordWrap: true,
       })
     )
+
   DINGDING_WEBHOOK &&
     dingding(
       formatter(type, message, {
@@ -31,6 +33,7 @@ const pushMessage = ({ type, message }) => {
         wordWrap: true,
       })
     )
+
   FEISHU_WEBHOOK &&
     feishu(
       formatter(type, message, {

@@ -1,6 +1,5 @@
 const Juejin = require('./juejin/index.js')
 const pushMessage = require('./utils/pushMessage.js')
-const { wait, getRandomArbitrary } = require('./utils/utils.js')
 const { COOKIE } = require('./ENV.js')
 
 const growth = {
@@ -27,7 +26,6 @@ ${growth.checkedIn ? `签到 +${growth.incrPoint} 矿石` : '今日已签到'}
 累计签到天数 ${growth.sumCount}
 当前幸运值 ${growth.luckyValue}
 免费抽奖次数 ${growth.freeCount}
-${growth.freeDrawed ? `恭喜抽中 ${growth.lotteryName}` : '今日已免费抽奖'}
 `.trim()
 }
 
@@ -46,7 +44,7 @@ const main = async () => {
   // 签到
   const checkIn = await juejin.getTodayStatus()
 
-  if (!checkIn) {
+  if (!checkIn.check_in_done) {
     const checkInResult = await juejin.checkIn()
 
     growth.checkedIn = true
@@ -62,13 +60,6 @@ const main = async () => {
   // 免费抽奖
   const lotteryConfig = await juejin.getLotteryConfig()
   growth.freeCount = lotteryConfig.free_count || 0
-
-  if (growth.freeCount > 0) {
-    const lottery = await juejin.drawLottery()
-
-    growth.freeDrawed = true
-    growth.lotteryName = lottery.lottery_name
-  }
 
   // 当前矿石数
   growth.sumPoint = await juejin.getCurrentPoint()
