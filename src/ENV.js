@@ -1,12 +1,3 @@
-/*
- * @Author: wangjiaxiang
- * @Date: 2024-08-06 17:40:40
- * @LastEditTime: 2024-08-07 09:49:05
- * @LastEditors: wangjiaxiang
- * @Description: 
- * @FilePath: /juejin-helper/src/ENV.js
- * 
- */
 module.exports = {
   COOKIE: process.env.COOKIE,
   EMAIL: process.env.EMAIL,

@@ -1,12 +1,3 @@
-/*
- * @Author: wangjiaxiang
- * @Date: 2024-08-06 17:40:40
- * @LastEditTime: 2024-08-07 09:54:11
- * @LastEditors: wangjiaxiang
- * @Description: 
- * @FilePath: /juejin-helper/src/main.js
- * 
- */
 const Juejin = require('./juejin/index.js')
 const pushMessage = require('./utils/pushMessage.js')
 const { wait, getRandomArbitrary } = require('./utils/utils.js')
@@ -54,7 +45,6 @@ const main = async () => {
 
   // 签到
   const checkIn = await juejin.getTodayStatus()
-  
   if (!checkIn.check_in_done) {
     const checkInResult = await juejin.checkIn()
     growth.checkedIn = true

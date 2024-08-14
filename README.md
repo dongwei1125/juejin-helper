@@ -1,12 +1,3 @@
-<!--
- * @Author: wangjiaxiang
- * @Date: 2024-08-06 17:40:40
- * @LastEditTime: 2024-08-07 09:55:53
- * @LastEditors: wangjiaxiang
- * @Description: 
- * @FilePath: /juejin-helper/README.md
- * 
--->
 <p align="center">
   <img src="./docs/logo.svg" />
 </p>
