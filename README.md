@@ -42,6 +42,9 @@
 | `PUSHPLUS_TOKEN` | 微信公众号`pushplus` `token` | 否 |
 | `DINGDING_WEBHOOK` | 钉钉机器人`Webhook` | 否 |
 | `FEISHU_WEBHOOK` | 飞书机器人`Webhook` | 否 |
+| `MS_TOKEN` | msToken`msToken` | 是 |
+| `A_BOGUS` | a_bogus`a_bogus` | 是 |
+| `UUID` | UUID`UUID` | 是 |
 
 ### 效果预览
 
