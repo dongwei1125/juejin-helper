@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer')
-const { EMAIL, AUTHORIZATION_CODE } = require('../ENV.js')
+const { EMAIL, AUTHORIZATION_CODE } = require('../../env.config.js')
 
 const email = async ({ title = '', content = '' } = {}) => {
   try {

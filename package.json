@@ -1,20 +1,17 @@
 {
   "name": "juejin-helper",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
-    "dev": "nodemon ./src/main.js",
-    "serve": "node ./src/main.js"
+    "serve": "node src/main.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.27.2",
-    "nodemailer": "^6.7.6"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.16"
+    "axios": "^1.7.4",
+    "nodemailer": "^6.9.14",
+    "puppeteer": "^23.1.0"
   }
 }

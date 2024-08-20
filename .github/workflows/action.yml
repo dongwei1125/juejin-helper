@@ -2,19 +2,19 @@ name: Growth
 
 on:
   schedule:
-    # UTC 时间 0 点运行一次
+    # UTC 时间 0 点运行一次 / 北京时间 9 点运行一次
     - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
   growth:
-    runs-on: ubuntu-latest
+    runs-on: windows-2019
     steps:
       - uses: actions/checkout@v3
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: '16.14.2'
+          node-version: '18.12.1'
 
       - name: Depend install and serve
         env:

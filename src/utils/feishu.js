@@ -1,5 +1,5 @@
 const axios = require('axios')
-const { FEISHU_WEBHOOK } = require('../ENV.js')
+const { FEISHU_WEBHOOK } = require('../../env.config.js')
 const SUCCESS_CODE = 0
 
 const feishu = async ({ title = '', content = '' } = {}) => {

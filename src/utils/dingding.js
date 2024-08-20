@@ -1,5 +1,5 @@
 const axios = require('axios')
-const { DINGDING_WEBHOOK } = require('../ENV.js')
+const { DINGDING_WEBHOOK } = require('../../env.config.js')
 const SUCCESS_CODE = 0
 
 const dingding = async ({ title = '', content = '' } = {}) => {
